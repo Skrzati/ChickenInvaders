@@ -141,6 +141,16 @@ h1.title-glow {
   letter-spacing: 4px;
 }
 
+h1.title-glow.danger {
+  background-image: linear-gradient(to bottom, #fff 20%, var(--neon-red) 100%);
+  filter: drop-shadow(0 0 10px rgba(255, 51, 102, 0.7));
+}
+
+h1.title-glow.success {
+  background-image: linear-gradient(to bottom, #fff 20%, var(--neon-green) 100%);
+  filter: drop-shadow(0 0 10px rgba(51, 255, 102, 0.7));
+}
+
 h2.subtitle-glow {
   font-family: var(--font-display);
   font-size: 1.5rem;
