@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --neon-red: #ff3366;
+  --neon-green: #33ff66;
+  --neon-blue: #3399ff;
+  --neon-yellow: #ffff33;
+  --neon-purple: #9933ff;
+  --bg-dark: #070712;
+  --panel-bg: rgba(15, 15, 35, 0.75);
+  --border-neon: rgba(51, 153, 255, 0.4);
+  --border-neon-glow: 0 0 15px rgba(51, 153, 255, 0.3);
+  
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  font-family: var(--font-mono);
+  color: #e0e0ff;
+  background-color: var(--bg-dark);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-dark);
+  font-size: 18px;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Starfield Background */
+.space-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: radial-gradient(circle at center, #11112b 0%, #050510 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glassmorphism Containers */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-neon);
+  box-shadow: var(--border-neon-glow), inset 0 0 20px rgba(51, 153, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Buttons */
+.arcade-btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: #fff;
+  background: transparent;
+  border: 2px solid var(--neon-blue);
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+  margin: 10px;
+  text-transform: uppercase;
+}
+
+.arcade-btn:hover {
+  background: var(--neon-blue);
+  box-shadow: 0 0 20px var(--neon-blue), 0 0 40px rgba(51, 153, 255, 0.5);
+  text-shadow: 0 0 8px #fff;
+  transform: translateY(-2px);
+}
+
+.arcade-btn:active {
+  transform: translateY(1px);
+}
+
+.arcade-btn.danger {
+  border-color: var(--neon-red);
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+}
+
+.arcade-btn.danger:hover {
+  background: var(--neon-red);
+  box-shadow: 0 0 20px var(--neon-red), 0 0 40px rgba(255, 51, 102, 0.5);
+}
+
+.arcade-btn.success {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 10px rgba(51, 255, 102, 0.2);
+}
+
+.arcade-btn.success:hover {
+  background: var(--neon-green);
+  box-shadow: 0 0 20px var(--neon-green), 0 0 40px rgba(51, 255, 102, 0.5);
+}
+
+/* Titles and Text */
+h1.title-glow {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #fff 30%, #aae 70%, var(--neon-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(51, 153, 255, 0.6));
+  animation: title-float 4s ease-in-out infinite;
+  letter-spacing: 4px;
+}
+
+h2.subtitle-glow {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--neon-yellow);
+  margin-top: 0;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255, 255, 51, 0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@keyframes title-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+/* Main Container Layout */
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 75vw; /* 4:3 Aspect Ratio */
+  max-width: 133.33vh; /* Limit width based on height */
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  box-sizing: border-box;
+  box-shadow: 0 0 40px rgba(51, 153, 255, 0.25);
+}
+
+/* Canvas Styling */
+.game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: block;
+}
+
+/* UI Overlay Screens */
+.overlay-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* HUD styles */
+.hud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #fff;
+  z-index: 5;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.hud-value {
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.hud-lives {
+  display: flex;
+  gap: 5px;
+}
+
+.hud-life-icon {
+  width: 16px;
+  height: 16px;
+  background-color: var(--neon-blue);
+  clip-path: polygon(50% 0%, 0% 100%, 50% 75%, 100% 100%);
+  display: inline-block;
+  box-shadow: 0 0 5px var(--neon-blue);
+  animation: pulse-glow 2s infinite alternate;
+}
+
+.hud-weapon {
+  color: var(--neon-yellow);
+}
+
+/* Boss Health Bar */
+.boss-health-container {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--neon-red);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+  transition: opacity 0.5s ease;
+}
+
+.boss-health-bar {
+  height: 100%;
+  background: linear-gradient(to right, #ff0055, #ff3366);
+  box-shadow: 0 0 10px var(--neon-red);
+  transition: width 0.1s ease-out;
+}
+
+.boss-name {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--neon-red);
+  text-shadow: 0 0 5px var(--neon-red);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Menu Customization */
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.instructions-panel {
+  max-width: 500px;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  text-align: left;
+  line-height: 1.5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.instructions-panel h3 {
+  font-family: var(--font-display);
+  color: var(--neon-blue);
+  margin-top: 0;
+  text-align: center;
+}
+
+.key-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 15px;
+  margin: 15px 0;
+}
+
+.key-cap {
+  background: #2a2a4a;
+  border: 1px solid #555588;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 0 #111122;
+  color: #fff;
+  min-width: 25px;
+  display: inline-block;
+}
+
+/* Settings Form */
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
+  gap: 30px;
+}
+
+.settings-label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.settings-control {
+  cursor: pointer;
+}
+
+/* Pulse Glow Keyframes */
+@keyframes pulse-glow {
+  0% { opacity: 0.6; box-shadow: 0 0 2px var(--neon-blue); }
+  100% { opacity: 1; box-shadow: 0 0 8px var(--neon-blue); }
+}
